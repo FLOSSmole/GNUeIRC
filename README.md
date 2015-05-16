@@ -11,5 +11,5 @@ Despite the URLs being shown as clickable links in Step 1, some of the log URLs 
 Step 3: Make a list of URLs where the summaries are. This is stored in listOfUrlsForSummariesXML.txt
 *  Summaries sometimes skip numbers: summaries 96, 100, and 104 do not exist
   
-Step 4: Collect each summary using getSummaryXML.py
+Step 4: Collect each summary using getSummaryXML.py  
 This creates a list of 122 XML summary files on disk
