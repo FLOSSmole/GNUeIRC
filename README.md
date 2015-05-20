@@ -12,4 +12,10 @@ Step 3: Make a list of URLs where the summaries are. This is stored in listOfUrl
 *  Summaries sometimes skip numbers: summaries 96, 100, and 104 do not exist
   
 Step 4: Collect each summary using getSummaryXML.py  
-This creates a list of 122 XML summary files on disk
+*  This creates a list of 122 XML summary files on disk
+
+Step 5: Create the SQL tables using GNUeCreates.sql
+*  There are five tables with logical relationships (no FK enforcement)
+
+Step 6: Parse the summaries using parseSummaryXML.py
+*  This populates the five GNUe database tables and the datasources table
