@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS `irc`.`GNUeSummaryItems` (
   `archive` VARCHAR(255) NULL,
   `startdate` VARCHAR(45) NULL,
   `enddate` VARCHAR(45) NULL,
+  `datasource_id` INT NOT NULL,
   PRIMARY KEY (`itemid`))
 ENGINE = MyISAM;
 
