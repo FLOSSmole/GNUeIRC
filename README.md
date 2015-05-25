@@ -19,4 +19,8 @@ Step 5: Create the SQL tables using GNUeCreates.sql
 *  There are five tables with logical relationships (no FK enforcement)
 
 Step 6: Parse the summaries using parseSummaryXML.py
-*  This populates the five GNUe database tables and the datasources table
+*  This populates the five GNUe database tables. 
+*  We populate one line in the FLOSSmole datasources table manually: 
+```
+INSERT INTO `ossmole_merged`.`forges` (`forge_id`, `forge_abbr`, `forge_long_name`, `forge_home_page`, `is_forge`, `is_directory`, `is_other`, `established`, `organization`) VALUES ('67', 'GNUe', 'GNUe Traffic IRC summaries', 'https://web.archive.org/web/20080509160725/http://www.gnuenterprise.org/irc-logs/', '0', '0', '1', '2001', 'GNUenterprise');
+```
