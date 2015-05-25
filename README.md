@@ -8,8 +8,6 @@ Step 1: Make a list of URLs where the logs are.
 *  This list is made by going to the IRC log archives for the project and collecting all of the log links as shown.
 
 Step 2: Collect each log on the list using getGNUeLogs.py  
-*  Despite the URLs being shown as clickable links in Step 1, some of the log URLs are invalid and return no pages. 
-*  For example, logs for dates between 07-Oct-2006 and 23-Jan-2008, inclusive are not available
 
 Step 3: Create database tables using GNUeLogCreates.sql 
 *  There is one table to hold the parsed logfiles 
