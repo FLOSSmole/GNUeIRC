@@ -7,12 +7,8 @@ from os.path import isfile, join
 datasource_id = 48038
 
 # Open database connection
-db = MySQLdb.connect(host="grid6.cs.elon.edu", 
-    user="user", 
-    passwd="password", 
-    db="irc", 
-    use_unicode=True, 
-    charset="utf8")
+db = MySQLdb.connect(host="grid6.cs.elon.edu", user="username", passwd="password", 
+    db="irc", use_unicode=True, charset="utf8")
 cursor = db.cursor()
 cursor.execute('SET NAMES utf8mb4')
 cursor.execute('SET CHARACTER SET utf8mb4')
@@ -23,7 +19,6 @@ files = [ f for f in listdir(path) if not f.startswith('.') and isfile(join(path
 for filename in files:
     print 'reading ', filename
     
-    # these IRC files have some windows encoding in them
     log = codecs.open(join(path,filename), 'r', encoding='utf-8', errors='ignore')
     
     linecount   = 0
@@ -34,18 +29,23 @@ for filename in files:
         linecount += 1
         # case 1: user message
         patternMessage = re.compile(ur'^<(.+?)>\s(.+?)$', re.UNICODE)
-    
+        # case 2: newer system message with *** at the front
+        patternSystem = re.compile(ur'^\*\*\*\s(.+?)$', re.UNICODE)
+        
         if patternMessage.search(line):
             username = patternMessage.search(line).group(1)   
             linemessage = patternMessage.search(line).group(2)
             linetype = 'message' 
-        
-        # case 2: system message
-        else:
+            
+        elif patternSystem.search(line):
+            linemessage = patternSystem.search(line).group(1)
             linetype = 'system'
+        else:
+            linetype='system'
             linemessage = line
-        
+            
         print 'linecount:',linecount,': ', linetype
+        
         
         try:
             cursor.execute(u"INSERT INTO GNUeIRCLogs(date_of_log, line_num, type, send_user, line_message, datasource_id) \
